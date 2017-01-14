@@ -100,12 +100,12 @@ ChatView chatView = (ChatView)findViewById(R.id.chatView);
 
             @Override
             public void onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, WebChromeClient.FileChooserParams                                  fileChooserParams) {
-                //
+                // called when the attached files in the ChatView is clicked, For android 5.0+
             }
 
             @Override
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
-
+                // called when the attached files in the ChatView is clicked, For android 3.0+
             }
         });
         chatView.loadUrl(chatUrl);
