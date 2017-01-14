@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "607137040629",
-    "firebase_url": "https://pursittest.firebaseio.com",
-    "project_id": "pursittest",
-    "storage_bucket": "pursittest.appspot.com"
+    "project_number": "380636245399",
+    "firebase_url": "https://puristit-bcb79.firebaseio.com",
+    "project_id": "puristit-bcb79",
+    "storage_bucket": "puristit-bcb79.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:607137040629:android:5fdecd0ec704c4f0",
+        "mobilesdk_app_id": "1:380636245399:android:5fdecd0ec704c4f0",
         "android_client_info": {
           "package_name": "com.puristit.livechat"
         }
       },
       "oauth_client": [
         {
-          "client_id": "607137040629-5u3glo82v8tujstt4q1gf8poscpjr9ij.apps.googleusercontent.com",
+          "client_id": "380636245399-abvmcqa5k7vgc4tu07jsmg27s9lukr41.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.puristit.livechat",
+            "certificate_hash": "75223F77A7A5646BCE71607D3E3D2BA9EFD55FED"
+          }
+        },
+        {
+          "client_id": "380636245399-env691qvmccadhm4gbfc608trk1ogqu6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBHlLGTCukKmxpTiAaCxR_KwGC4Epr3JXM"
+          "current_key": "AIzaSyCalwKVEB-g_PsGBuE42FH6x7uzt9cEEDw"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380636245399-env691qvmccadhm4gbfc608trk1ogqu6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

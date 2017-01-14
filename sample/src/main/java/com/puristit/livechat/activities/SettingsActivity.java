@@ -109,7 +109,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     public void showDialog(){
         new AlertDialog.Builder(this)
                 .setTitle("Restart App")
-                .setMessage("In oder to change the settings the app must restart, please restart it now.")
+                .setMessage("In order to change the settings the app must restart, please restart it now.")
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         System.exit(0);

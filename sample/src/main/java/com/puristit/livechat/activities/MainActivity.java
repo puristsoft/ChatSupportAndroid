@@ -77,10 +77,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, SettingsActivity.class));
         }
 
-
-
-        registerReceiver();
-        getGCM_ID();
     }
 
     @Override
@@ -126,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         registerReceiver();
+        getGCM_ID();
     }
 
     @Override
