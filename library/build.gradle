@@ -7,8 +7,6 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
     }
     buildTypes {
         release {
@@ -24,3 +22,17 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.loopj.android:android-async-http:1.4.9'
 }
+
+
+task deleteJar(type: Delete) {
+    delete 'release/PuristitSDK.jar'
+}
+
+task exportJar(type: Copy){
+    from('build/intermediates/bundles/release/')
+    into('release/')
+    include('classes.jar')
+    rename('classes.jar', 'PuristitSDK.jar')
+}
+
+exportJar.dependsOn(deleteJar, build)
