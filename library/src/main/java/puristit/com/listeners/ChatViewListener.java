@@ -1,4 +1,4 @@
-package puristit.com.widget;
+package puristit.com.listeners;
 
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -47,6 +47,11 @@ public interface ChatViewListener {
      *
      * */
     public abstract void onChatViewDismiss();
+
+
+
+
+
 
 
     /**

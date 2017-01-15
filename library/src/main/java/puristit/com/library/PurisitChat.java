@@ -1,9 +1,16 @@
 package puristit.com.library;
 
 import android.content.Context;
-import android.graphics.Color;
 
-import puristit.com.server_request.ResponseListener;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.TextHttpResponseHandler;
+
+import java.net.HttpURLConnection;
+
+import cz.msebera.android.httpclient.Header;
+import puristit.com.listeners.ResponseListener;
+import puristit.com.listeners.URLValidationListener;
+import puristit.com.widget.ChatView;
 
 /**
  * Created by Anas on 6/10/2016.
@@ -178,6 +185,43 @@ public class PurisitChat {
             validity = 720;
         }
         mRequestManager.initialize(userName, password, validity, regID, loc_lat, loc_long, language, listener);
+    }
+
+
+
+
+
+    /**
+     * Notify the host application that the Chat Url is not valid, a Initialize Api must be called
+     * to generate a new Chat URL.
+     *
+     * @param chatUrl the chat url that will be checked for validation.
+     * @param listener a listener will return the response of the validation action.
+     *
+     * */
+    public void checkURLExpiration(String chatUrl, final URLValidationListener listener){
+        //Check is the Chat Url is still valid
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.setURLEncodingEnabled(false);
+        client.setConnectTimeout(1000);
+        client.get(chatUrl, new TextHttpResponseHandler() {
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                if (statusCode == HttpURLConnection.HTTP_NOT_FOUND && listener != null) {
+                    listener.onURLExpired();
+                } else {
+                    listener.onURLValid();
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                if (listener != null){
+                    listener.onURLValid();
+                }
+            }
+        });
     }
 
 

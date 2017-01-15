@@ -1,12 +1,8 @@
 package puristit.com.widget;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Environment;
-import android.os.Parcelable;
-import android.provider.MediaStore;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.webkit.ValueCallback;
@@ -14,8 +10,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import java.io.File;
-import java.io.IOException;
+import puristit.com.listeners.ChatViewListener;
 
 /**
  * Created by Anas on 1/13/2017.

@@ -29,7 +29,7 @@ import com.puristit.livechat.utils.MyUtils;
 import org.json.JSONObject;
 
 import puristit.com.library.PurisitChat;
-import puristit.com.server_request.ResponseListener;
+import puristit.com.listeners.ResponseListener;
 import puristit.com.server_request.ServerResponse;
 
 import static com.puristit.livechat.gcm.RegistrationIntentService.TOKEN;
@@ -255,8 +255,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void getGCM_ID(){
-        vShowProgressDialog("Please wait, getting Google Device Id");
         if (checkPlayServices()) {
+            vShowProgressDialog("Please wait, getting Google Device Id");
             // Start IntentService to register this application with GCM.
             Intent intent = new Intent(this, RegistrationIntentService.class);
             startService(intent);

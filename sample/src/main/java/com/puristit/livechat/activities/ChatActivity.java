@@ -17,18 +17,20 @@ import android.view.MenuItem;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.puristit.livechat.R;
+import com.puristit.livechat.utils.MyUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import puristit.com.library.PurisitChat;
+import puristit.com.listeners.ChatViewListener;
+import puristit.com.listeners.URLValidationListener;
 import puristit.com.widget.ChatView;
-import puristit.com.widget.ChatViewListener;
 
 /**
  * Created by Anas on 12/12/2016.
@@ -52,13 +54,35 @@ public class ChatActivity extends AppCompatActivity implements ChatViewListener 
         setContentView(R.layout.activity_chat);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        String chatUrl = getIntent().getStringExtra("ChatUrl");
+        final String chatUrl = getIntent().getStringExtra("ChatUrl");
 
-        ChatView chatView = (ChatView)findViewById(R.id.wvChatView);
+        final ChatView chatView = (ChatView) findViewById(R.id.wvChatView);
         chatView.setChatViewListener(this);
-        chatView.loadUrl(chatUrl);
 
+
+        //Checking Url Validity
         vShowProgressDialog("Please wait");
+        PurisitChat purisitChat = PurisitChat.getInstance(this, MyUtils.getSharedPrefString(this, "PuristKey", ""));
+        purisitChat.checkURLExpiration(chatUrl, new URLValidationListener() {
+            @Override
+            public void onURLValid() {
+                chatView.loadUrl(chatUrl);
+            }
+
+            @Override
+            public void onURLExpired() {
+                //TODO if the url is expired PurisitChat.initialize must be called to get new Char Url
+                onBackPressed();
+            }
+
+            @Override
+            public void onError() {
+                //TODO if there is a problem with the url, PurisitChat.initialize must be called to
+                //TODO get new Char Url
+                onBackPressed();
+            }
+        });
+
     }
 
 
@@ -87,8 +111,7 @@ public class ChatActivity extends AppCompatActivity implements ChatViewListener 
 
     @Override
     public void onChatViewDismiss() {
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
+        onBackPressed();
     }
 
     @Override

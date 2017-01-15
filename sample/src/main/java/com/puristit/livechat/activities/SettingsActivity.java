@@ -63,6 +63,10 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         btnSave.setOnClickListener(this);
 
 
+        et_UserName.setText(MyUtils.getSharedPrefString(this, "UserName", ""));
+        et_Password.setText(MyUtils.getSharedPrefString(this, "Password", ""));
+        et_NickName.setText(MyUtils.getSharedPrefString(this, "NickName", ""));
+        et_PuristKey.setText(MyUtils.getSharedPrefString(this, "PuristKey", ""));
 
     }
 

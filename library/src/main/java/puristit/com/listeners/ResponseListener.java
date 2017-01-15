@@ -1,4 +1,6 @@
-package puristit.com.server_request;
+package puristit.com.listeners;
+
+import puristit.com.server_request.ServerResponse;
 
 /**
  * Created by Anas Bakez on 9/10/2015.

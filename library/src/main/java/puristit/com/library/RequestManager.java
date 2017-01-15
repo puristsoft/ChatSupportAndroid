@@ -9,17 +9,13 @@ import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.SyncHttpClient;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.HttpURLConnection;
-import java.util.LinkedHashMap;
 
 import cz.msebera.android.httpclient.Header;
-import puristit.com.server_request.ResponseListener;
+import puristit.com.listeners.ResponseListener;
 import puristit.com.server_request.ServerResponse;
-
-import static android.os.Build.ID;
 
 /**
  * Created by Anas Bakez on 9/9/2015.
@@ -114,18 +110,6 @@ public class RequestManager {
 
 
 
-
-//    https://api.puristit.com/initialize?
-//    // p_username=Anastest@madfouati.puristit.com&
-//    // password=123456&
-//    // name=Anas&
-//    // loc_lat=42.858222&
-//    // loc_long=1.294500&
-//    // platfrom=Android&
-//    // registration_id=23423423&
-//    // language=en
-//
-
     protected void initialize(String userName, String password, int validity, String regID, double loc_lat, double loc_long, String language, final ResponseListener listener) {
         String apiName = "/initialize";
         try{
@@ -163,10 +147,12 @@ public class RequestManager {
                 listener.onFailedResponse(response);
             }
         }
-
-
-
     }
+
+
+
+
+
 
 
 
@@ -230,6 +216,11 @@ public class RequestManager {
             handleFailedResponse(-100, e, listener);
         }
     }
+
+
+
+
+
 
 
 
