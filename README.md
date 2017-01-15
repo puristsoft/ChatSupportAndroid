@@ -57,6 +57,30 @@ purisitChat.initialize(p_username, p_password, GCM_ID, new ResponseListener() {
 ```
 
 
+### Checking Chat URL Validity
+before using Chat url a checkURLExpiration can be called to check if URl is valid or expired.
+
+```gradle
+ purisitChat.checkURLExpiration(chatUrl, new URLValidationListener() {
+            @Override
+            public void onURLValid() {
+                // the URl is valid and can be used
+            }
+
+            @Override
+            public void onURLExpired() {
+               // the URL is expired and Initialize APi must be called to get new Url
+            }
+
+            @Override
+            public void onError() {
+                //there is a problem with the url, Initialize APi must be called to get new Url
+            }
+        });
+```
+
+
+
 ### Chat Url Builder
 Url builder is used to generate url to use in the ChatView
 
