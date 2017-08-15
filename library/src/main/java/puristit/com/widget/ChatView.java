@@ -3,8 +3,10 @@ package puristit.com.widget;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.net.http.SslError;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -86,17 +88,24 @@ public class ChatView extends WebView {
             super.onPageStarted(view, url, favicon);
 
             if (mListener != null){
-                mListener.onPageStarted(view, url, favicon);
+                if (url.equals("https://user.puristit.com/logout")) {
+                    mListener.onChatViewDismiss();
+                } else {
+                    mListener.onPageStarted(view, url, favicon);
+                }
             }
+        }
+
+        @Override
+        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+            //TODO as discussed with Emran, this code is committed to test with FACT
+            //TODO it must be removed on release
+            handler.proceed(); // Ignore SSL certificate error
         }
 
         public void onPageFinished(WebView view, String url) {
             if (mListener != null){
-                if (url.endsWith("/logout")) {
-                    mListener.onChatViewDismiss();
-                } else {
-                    mListener.onPageFinished(view, url);
-                }
+                mListener.onPageFinished(view, url);
             }
     }
 

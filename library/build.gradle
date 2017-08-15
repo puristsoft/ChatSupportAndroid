@@ -17,22 +17,51 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.3.0'
+//    compile fileTree(dir: 'libs', include: ['*.jar'])
+
     compile 'com.loopj.android:android-async-http:1.4.9'
 }
 
 
-task deleteJar(type: Delete) {
-    delete 'release/PuristitSDK.jar'
+//task deleteJar(type: Delete) {
+//    delete 'release/PuristitSDK.jar'
+//}
+//
+//task exportJar(type: Copy){
+//    from('build/intermediates/bundles/release/')
+//    into('release/')
+//    include('classes.jar')
+//    rename('classes.jar', 'PuristitSDK.jar')
+//}
+//
+//exportJar.dependsOn(deleteJar, build)
+
+
+android.libraryVariants.all {
+    variant ->
+        def name = variant.buildType.name
+
+        if (name.equals(com.android.builder.core.BuilderConstants.DEBUG)) {
+            return; // Skip debug builds.
+        }
+        def task = project.tasks.create "createJar${name.capitalize()}", Jar
+        task.dependsOn variant.javaCompile
+//Include Java classes
+        task.from variant.javaCompile.destinationDir
+//Include dependent jars with some exceptions
+        task.from configurations.compile.findAll {
+           it.getName() != 'android.jar' && !it.getName().startsWith('junit') && !it.getName().startsWith('hamcrest')
+        }.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+        artifacts.add('archives', task);
+
 }
 
-task exportJar(type: Copy){
-    from('build/intermediates/bundles/release/')
+task copyJar(type: Copy){
+    from('build/libs/')
     into('release/')
-    include('classes.jar')
-    rename('classes.jar', 'PuristitSDK.jar')
-}
+    include('library.jar')
+    rename('library.jar', 'PuristitSDK.jar')
 
-exportJar.dependsOn(deleteJar, build)
+}
