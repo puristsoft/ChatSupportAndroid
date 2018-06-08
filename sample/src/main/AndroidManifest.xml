@@ -5,9 +5,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 
-    <permission android:name="com.puristit.livechat.permission.C2D_MESSAGE"
+    <permission android:name="com.puristchat.android.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
     <uses-permission android:name="com.puristit.livechat.permission.C2D_MESSAGE" />
 
@@ -24,42 +25,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ChatActivity">
-        </activity>
-        <activity android:name=".activities.SettingsActivity"
-            android:label="Settings">
-        </activity>
 
 
+        <activity android:name=".activities.LoginActivity"/>
+        <!--<activity android:name="puristit.com.library.ChatActivity">-->
+        <!--</activity>-->
+        <activity android:name="puristit.com.library.ChatActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
 
 
-        <receiver
-            android:name="com.google.android.gms.gcm.GcmReceiver"
-            android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND" >
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <category android:name="com.example.gcm" />
-            </intent-filter>
-        </receiver>
         <service
-            android:name="com.puristit.livechat.gcm.MyGcmListenerService"
-            android:exported="false" >
+            android:name="com.puristit.livechat.fcm.MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
+
         <service
-            android:name="com.puristit.livechat.gcm.MyInstanceIDListenerService"
-            android:exported="false">
+            android:name="com.puristit.livechat.fcm.MyFirebaseInstanceIDService">
             <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID" />
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
-        <service
-            android:name="com.puristit.livechat.gcm.RegistrationIntentService"
-            android:exported="false">
-        </service>
+
     </application>
 
 </manifest>

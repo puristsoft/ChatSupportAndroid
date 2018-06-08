@@ -1,3 +1,34 @@
 <resources>
-    <string name="app_name">library</string>
+    <string name="app_name">Purist chat</string>
+
+
+
+    <string name="purist_login_please_wait">Logging in, Please wait...</string>
+    <string name="purist_login_failed_toast">Login Failed</string>
+    <string name="purist_login_failed_msg">Couldn\'t login, please try again!</string>
+    <string name="purist_login_no_connection_msg">No internet connection, please connect to the internet and try again!</string>
+    <string name="purist_login_general_error_msg">There was an error while connecting to service, please try again!</string>
+    <string name="purist_general_retry">Retry</string>
+    <string name="purist_general_reconnecting">Reconnecting</string>
+    <string name="purist_general_downloading">Downloading</string>
+    <string name="purist_general_download_completed">Download completed</string>
+    <string name="purist_general_downloading_failed">Couldn\'t download file, please try again</string>
+    <string name="purist_general_downloading_completed">Download completed</string>
+
+
+
+    <string name="purist_rooms_title">Select Chat Room</string>
+    <string name="purist_rooms_joining">Joining Room</string>
+    <string name="purist_rooms_join_failed">Couldn\'t join the Room, Please try again!</string>
+    <string name="purist_rooms_msg_sent_failed">Couldn\'t send the message, Please try again!</string>
+
+
+    <string name="purist_chat_send_msg_hint">Type a message to send</string>
+    <string name="purist_chat_operator_offline_hint">Operator is not online right now</string>
+    <string name="purist_chat_empty_msg_error">Message text can\'t be empty</string>
+    <string name="purist_chat_uploading_attachment">Uploading file</string>
+    <string name="purist_chat_uploading_attachment_success">File Uploaded Successfully</string>
+    <string name="purist_chat_uploading_attachment_failed">Failed to upload file</string>
+    <string name="purist_chat_uploading_attachment_size_exceed">Can\'t upload File with Size more than %s MB</string>
+
 </resources>

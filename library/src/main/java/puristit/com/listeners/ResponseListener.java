@@ -9,4 +9,5 @@ public abstract class ResponseListener {
 
     public abstract void onSuccessResponse(ServerResponse response);
     public void onFailedResponse(ServerResponse response){}
+    public void onProgressResponse(long percentage, long bytesWritten, long totalSize){}
 }

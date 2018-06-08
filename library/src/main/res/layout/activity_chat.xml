@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+
+    <FrameLayout
+        android:id="@+id/purist_chat_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:id="@+id/purist_ll_chat_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:clickable="true"
+        android:background="#EEEE"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/purist_tv_chat_error_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/purist_login_failed_msg"/>
+
+        <Button
+            android:id="@+id/purist_btn_purist_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/purist_general_retry"/>
+    </LinearLayout>
+
+</RelativeLayout>

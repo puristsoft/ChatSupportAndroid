@@ -21,54 +21,28 @@
 
 
         <Button
-            android:id="@+id/btnRegister"
+            android:id="@+id/btnChat"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="120dp"
+            android:text="Chat"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="40dp"
-            android:text="Register"
-            android:drawableLeft="@drawable/ic_close_icon"
-            android:onClick="onRegisterClicked"/>
-
-
+            android:onClick="onChatClicked"/>
 
         <Button
-            android:id="@+id/btnInitialize"
+            android:id="@+id/btnLogin"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:text="Change Login"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:text="Initialize"
-            android:drawableLeft="@drawable/ic_close_icon"
-            android:onClick="onInitializeClicked"/>
+            android:onClick="onLoginClicked"/>
 
 
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp">
-
-
-            <CheckBox
-                android:id="@+id/chSelectDepartment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Select department"
-                android:layout_alignLeft="@+id/btnChat"/>
-
-            <Button
-                android:id="@+id/btnChat"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="Chat"
-                android:layout_below="@id/chSelectDepartment"
-                android:drawableLeft="@drawable/ic_close_icon"
-                android:onClick="onChatClicked"/>
-
-        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
